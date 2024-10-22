@@ -1,12 +1,11 @@
 import Image from "next/image";
-import { CheckoutLink } from "./CheckoutLink";
 import { DeleteLineButton } from "./DeleteLineButton";
 import * as Checkout from "@/lib/checkout";
 import { formatMoney, getHrefForVariant } from "@/lib/utils";
 import { LinkWithChannel } from "@/ui/atoms/LinkWithChannel";
 
 export const metadata = {
-	title: "Shopping Cart · Saleor Storefront example",
+	title: "Shopping Cart · Mindfire Ecom",
 };
 
 export default async function Page({ params }: { params: { channel: string } }) {
@@ -81,27 +80,6 @@ export default async function Page({ params }: { params: { channel: string } }) 
 						</li>
 					))}
 				</ul>
-
-				<div className="mt-12">
-					<div className="rounded border bg-neutral-50 px-4 py-2">
-						<div className="flex items-center justify-between gap-2 py-2">
-							<div>
-								<p className="font-semibold text-neutral-900">Your Total</p>
-								<p className="mt-1 text-sm text-neutral-500">Shipping will be calculated in the next step</p>
-							</div>
-							<div className="font-medium text-neutral-900">
-								{formatMoney(checkout.totalPrice.gross.amount, checkout.totalPrice.gross.currency)}
-							</div>
-						</div>
-					</div>
-					<div className="mt-10 text-center">
-						<CheckoutLink
-							checkoutId={checkoutId}
-							disabled={!checkout.lines.length}
-							className="w-full sm:w-1/3"
-						/>
-					</div>
-				</div>
 			</form>
 		</section>
 	);
